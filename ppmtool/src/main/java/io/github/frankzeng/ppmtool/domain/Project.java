@@ -9,22 +9,22 @@ import java.util.Date;
 
 @Entity
 public class Project {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
-    @NotBlank(message = "Project Name Is required")
+    private Long id;
+    @NotBlank(message = "Project name is required")
     private String projectName;
-    @NotBlank(message = "Project Identifier is required")
+    @NotBlank(message ="Project Identifier is required")
     @Size(min=4, max=5, message = "Please use 4 to 5 characters")
     @Column(updatable = false, unique = true)
     private String projectIdentifier;
-    @NotBlank(message = "Description is required")
+    @NotBlank(message = "Project description is required")
     private String description;
     @JsonFormat(pattern = "yyyy-mm-dd")
-    private Date startDate;
+    private Date start_date;
     @JsonFormat(pattern = "yyyy-mm-dd")
-    private Date endDate;
-
+    private Date end_date;
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date created_At;
     @JsonFormat(pattern = "yyyy-mm-dd")
@@ -33,22 +33,12 @@ public class Project {
     public Project() {
     }
 
-    @PrePersist
-    protected void onCreate() {
-        this.created_At = new Date();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        this.updated_At = new Date();
-    }
-
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getProjectName() {
@@ -75,20 +65,20 @@ public class Project {
         this.description = description;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public Date getStart_date() {
+        return start_date;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setStart_date(Date start_date) {
+        this.start_date = start_date;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Date getEnd_date() {
+        return end_date;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setEnd_date(Date end_date) {
+        this.end_date = end_date;
     }
 
     public Date getCreated_At() {
@@ -106,4 +96,15 @@ public class Project {
     public void setUpdated_At(Date updated_At) {
         this.updated_At = updated_At;
     }
+
+    @PrePersist
+    protected void onCreate(){
+        this.created_At = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate(){
+        this.updated_At = new Date();
+    }
+
 }
