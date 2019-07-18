@@ -1,8 +1,12 @@
-import {combineReducers} from "redux"
-import errorReducer from "./errorReducers"
-import projectReducers from "./projectReducers";
+import { combineReducers } from "redux";
+import errorReducer from "./errorReducer";
+import projectReducer from "./projectReducer";
+import backlogReducer from "./backlogReducer";
+import securityReducer from "./securityReducer";
 
 export default combineReducers({
-    errors: errorReducer,
-    project: projectReducers
-})
+  errors: errorReducer,
+  project: projectReducer,
+  backlog: backlogReducer,
+  security: securityReducer
+});
